@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
@@ -154,11 +155,11 @@
         /* Slide 1: Typography */
         .main-title {
             font-family: var(--font-display);
-            font-size: 12rem;
+            font-size: clamp(4rem, 15vw, 12rem);
             line-height: 1.1;
             text-transform: uppercase;
             color: #fff;
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1rem, 3vh, 2rem);
             text-shadow: 6px 6px 0px rgba(0, 243, 255, 0.3);
         }
 
@@ -168,24 +169,24 @@
         }
 
         .subtitle {
-            font-size: 4.5rem;
-            margin-top: 1rem;
+            font-size: clamp(1.5rem, 5vw, 4.5rem);
+            margin-top: clamp(0.5rem, 1.5vh, 1rem);
             color: #ddd;
             font-weight: 500;
             text-shadow: 0 2px 0px rgba(0, 0, 0, 0.8);
         }
 
         .press-key-guide {
-            margin-top: 5rem;
-            font-size: 2.5rem;
+            margin-top: clamp(2rem, 8vh, 5rem);
+            font-size: clamp(1.2rem, 3vw, 2.5rem);
             color: var(--accent-cyan);
             animation: blink 1.5s infinite;
             border: 3px solid var(--accent-cyan);
-            padding: 20px 40px;
+            padding: clamp(10px, 2vh, 20px) clamp(20px, 4vw, 40px);
             border-radius: 30px;
             font-weight: bold;
             background: rgba(0, 243, 255, 0.1);
-        }
+        }       
 
         /* Slide 2: Game Start */
         .game-start-page {
@@ -227,11 +228,11 @@
         }
 
         .game-title {
-            font-size: 7rem;
+            font-size: clamp(3rem, 10vw, 7rem);
             font-family: var(--font-display);
             color: var(--accent-cyan);
             text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2rem;
+            margin-bottom: clamp(1rem, 3vh, 2rem);
             margin-top: 0.5rem;
             font-weight: 400;
             letter-spacing: -2px;
@@ -250,24 +251,24 @@
         .rule-item {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: clamp(1rem, 2.5vw, 2rem);
             background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem 2.5rem;
+            padding: clamp(1rem, 2vh, 1.5rem) clamp(1.5rem, 3vw, 2.5rem);
             border-radius: 20px;
             border: 2px solid rgba(0, 243, 255, 0.3);
             opacity: 0;
         }
 
         .rule-number {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-family: var(--font-display);
             color: var(--accent-lime);
-            min-width: 70px;
+            min-width: clamp(50px, 6vw, 70px);
             text-align: center;
             background: rgba(204, 255, 0, 0.1);
             border-radius: 50%;
-            width: 70px;
-            height: 70px;
+            width: clamp(50px, 6vw, 70px);
+            height: clamp(50px, 6vw, 70px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -276,7 +277,7 @@
         }
 
         .rule-text {
-            font-size: 2.2rem;
+            font-size: clamp(1.2rem, 2.5vw, 2.2rem);
             line-height: 1.4;
             color: #fff;
             font-weight: 600;
@@ -324,14 +325,14 @@
         .card-yellow { background: #f1c40f; color: #222; border: 3px solid #ffeb3b; }
         .card-red { background: #e74c3c; color: #fff; border: 3px solid #ff7675; }
 
-        .card-icon { font-size: 4.5rem; margin-bottom: 0.5rem; }
-        .card-title { font-size: 2.2rem; font-weight: 800; text-align: center; word-break: keep-all; }
+        .card-icon { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 0.5rem; }
+        .card-title { font-size: clamp(1.2rem, 2.5vw, 2.2rem); font-weight: 800; text-align: center; word-break: keep-all; }
 
         .keyword-list { list-style: none; text-align: left; width: 100%; }
         .keyword-list li {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            padding-left: 2.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+            margin-bottom: clamp(0.5rem, 1.2vh, 1rem);
+            padding-left: clamp(1.5rem, 3vw, 2.5rem);
             position: relative;
             line-height: 1.5;
             color: #ddd;
@@ -339,7 +340,7 @@
             opacity: 0;
         }
 
-        .keyword-list li::before { content: '✔'; position: absolute; left: 0; top: 5px; font-size: 2rem; font-weight: bold; }
+        .keyword-list li::before { content: '✔'; position: absolute; left: 0; top: 5px; font-size: clamp(1rem, 2vw, 2rem); font-weight: bold; }
         .green-list li::before { color: #2ecc71; }
         .yellow-list li::before { color: #f1c40f; }
         .red-list li::before { color: #e74c3c; }
@@ -353,34 +354,34 @@
             box-shadow: 0 0 50px rgba(52, 152, 219, 0.4); border: 5px solid #fff;
         }
 
-        .strategy-title { font-size: 5.5rem; margin-bottom: 1.5rem; color: var(--accent-cyan); opacity: 0; }
-        .strategy-desc { font-size: 3rem; line-height: 1.6; margin-bottom: 3rem; opacity: 0; }
+        .strategy-title { font-size: clamp(2.5rem, 7vw, 5.5rem); margin-bottom: clamp(1rem, 2.5vh, 1.5rem); color: var(--accent-cyan); opacity: 0; }
+        .strategy-desc { font-size: clamp(1.5rem, 4vw, 3rem); line-height: 1.6; margin-bottom: clamp(2rem, 5vh, 3rem); opacity: 0; }
         .strategy-desc strong { color: var(--accent-lime); text-decoration: underline; text-underline-offset: 8px; }
-        .strategy-context { font-size: 2.5rem; color: #aaa; margin-bottom: 2rem; background: rgba(255, 255, 255, 0.1); padding: 15px 30px; border-radius: 50px; display: inline-block; opacity: 0; }
+        .strategy-context { font-size: clamp(1rem, 2.5vw, 2.5rem); color: #aaa; margin-bottom: 2rem; background: rgba(255, 255, 255, 0.1); padding: 15px 30px; border-radius: 50px; display: inline-block; opacity: 0; }
 
-        .note-paper { background: #fff; color: #333; padding: 2rem 4rem; transform: rotate(-2deg); box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); position: relative; display: inline-block; }
-        .handwriting { font-family: 'Nanum Pen Script', cursive; font-size: 3.8rem; font-weight: bold; color: #d63031; }
+        .note-paper { background: #fff; color: #333; padding: clamp(1rem, 3vw, 2rem) clamp(2rem, 6vw, 4rem); transform: rotate(-2deg); box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5); position: relative; display: inline-block; }
+        .handwriting { font-family: 'Nanum Pen Script', cursive; font-size: clamp(1.8rem, 5vw, 3.8rem); font-weight: bold; color: #d63031; }
 
         /* Slide 5: Scoring */
-        .section-title { font-size: 5rem; margin-bottom: 2.5rem; text-transform: uppercase; color: #fff; border-bottom: 5px solid var(--accent-pink); padding-bottom: 10px; }
+        .section-title { font-size: clamp(2.5rem, 7vw, 5rem); margin-bottom: clamp(1.5rem, 4vh, 2.5rem); text-transform: uppercase; color: #fff; border-bottom: 5px solid var(--accent-pink); padding-bottom: 10px; }
         .score-board-container { display: flex; justify-content: center; align-items: center; width: 80%; flex-direction: column; }
         .score-board { display: flex; justify-content: space-between; gap: 20px; width: 100%; margin-bottom: 2rem; }
-        .score-card { background: rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 2rem; width: 32%; display: flex; flex-direction: column; align-items: center; border: 2px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s; opacity: 0; }
+        .score-card { background: rgba(255, 255, 255, 0.05); border-radius: 20px; padding: clamp(1rem, 3vh, 2rem); width: 32%; display: flex; flex-direction: column; align-items: center; border: 2px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s; opacity: 0; }
         .score-card:hover { transform: translateY(-10px); }
 
-        .medal-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 3.5rem; font-weight: bold; color: #fff; margin-bottom: 1rem; }
+        .medal-circle { width: clamp(60px, 8vw, 100px); height: clamp(60px, 8vw, 100px); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: bold; color: #fff; margin-bottom: 1rem; }
         .rank-1 .medal-circle { background: #f1c40f; }
         .rank-2 .medal-circle { background: #95a5a6; }
         .rank-3 .medal-circle { background: #d35400; }
 
-        .score-points { font-size: 6.5rem; font-weight: 900; font-family: var(--font-display); margin-bottom: 0.5rem; }
+        .score-points { font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 900; font-family: var(--font-display); margin-bottom: 0.5rem; }
         .rank-1 .score-points { color: #f1c40f; }
         .rank-2 .score-points { color: #ecf0f1; }
         .rank-3 .score-points { color: #e67e22; }
-        .score-label { font-size: 2.5rem; color: #ccc; }
+        .score-label { font-size: clamp(1.2rem, 3vw, 2.5rem); color: #ccc; }
 
-        .warning-box { background: rgba(231, 76, 60, 0.1); border: 2px solid #e74c3c; border-radius: 15px; padding: 1.5rem 3rem; text-align: center; animation: pulse 2s infinite; opacity: 0; }
-        .warning-text { font-size: 2.8rem; color: #ff7675; font-weight: bold; }
+        .warning-box { background: rgba(231, 76, 60, 0.1); border: 2px solid #e74c3c; border-radius: 15px; padding: clamp(1rem, 2.5vh, 1.5rem) clamp(2rem, 5vw, 3rem); text-align: center; animation: pulse 2s infinite; opacity: 0; }
+        .warning-text { font-size: clamp(1.5rem, 4.5vw, 2.8rem); color: #ff7675; font-weight: bold; }
 
         /* Slide 6: Examples */
         .examples-container { display: flex; justify-content: center; gap: 2rem; width: 100%; margin-top: 1rem; }
@@ -403,6 +404,44 @@
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); } }
+
+        /* Navigation Controls */
+        .nav-controls {
+            position: fixed;
+            bottom: clamp(20px, 4vh, 40px);
+            right: clamp(20px, 4vw, 40px);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            width: clamp(40px, 6vh, 60px);
+            height: clamp(40px, 6vh, 60px);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(1rem, 2vh, 1.5rem);
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent-cyan);
+            transform: scale(1.1);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 
@@ -629,6 +668,11 @@
         </section>
     </div>
 
+    <div class="nav-controls">
+        <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="next-btn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
     <div class="bg-overlay"></div>
 
     <script>
@@ -654,9 +698,16 @@
                 }
             });
 
-            document.addEventListener('click', (e) => {
-                // 헤더 클릭시에는 무시
-                if(e.target.closest('.header')) return;
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if(prevBtn) prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (!isAnimating) prevSlide();
+            });
+
+            if(nextBtn) nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 if (!isAnimating) nextSlide();
             });
 
