@@ -47,6 +47,8 @@
             height: 100vh;
             overflow: hidden;
             background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
         }
 
         .bg-overlay {
@@ -57,7 +59,7 @@
         }
 
         .header {
-            position: absolute; top: 0; left: 0; width: 100%;
+            position: relative; width: 100%; flex-shrink: 0;
             padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
             z-index: 100; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
         }
@@ -69,11 +71,18 @@
         .nav-item.active { color: var(--accent-cyan); }
         .nav-item.active::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent-cyan); box-shadow: 0 0 5px var(--accent-cyan); }
 
-        #presentation { width: 100%; height: 100%; position: relative; }
+        #presentation { flex: 1; width: 100%; position: relative; overflow: hidden; }
 
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; padding-top: 60px; }
+        .slide { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; flex-direction: column; overflow-y: auto; overflow-x: hidden; 
+            opacity: 0; visibility: hidden; padding: 20px 0; 
+        }
         .slide.active { z-index: 10; }
-        .content { width: 85%; height: 85%; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .content { 
+            width: 85%; margin: auto; 
+            position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+        }
         .item-center { text-align: center; }
 
         /* Slide 1 */
@@ -150,37 +159,60 @@
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); } 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); } }
 
-        /* --- [모바일 전용 환경: 가로폭 1024px 이하 스케일링] --- */
+        /* --- [모바일 전용 환경: 리얼 풀 스택 반응형 (A안)] --- */
         @media (max-width: 1024px) {
-            #main-wrapper {
-                position: absolute; top: 50%; left: 50%; width: 1920px !important; height: 1080px !important;
-                margin-top: -540px; margin-left: -960px; transform-origin: center center;
-            }
-            /* clamp 무력화 및 PX 고정 */
-            .main-title { font-size: 180px; margin-bottom: 30px; }
-            .subtitle { font-size: 70px; margin-top: 15px; }
-            .press-key-guide { font-size: 40px; padding: 20px 40px; margin-top: 80px; }
-            .keyword-mini { font-size: 57px; } .keyword-mini span { font-size: 34px; }
-            .game-title { font-size: 110px; margin-bottom: 30px; }
-            .rule-item { gap: 32px; padding: 24px 40px; }
-            .rule-number { font-size: 56px; width: 70px; height: 70px; min-width: 70px; }
-            .rule-text { font-size: 35px; }
-            .card-icon { font-size: 72px; } .card-title { font-size: 35px; }
-            .keyword-list li { font-size: 35px; margin-bottom: 16px; padding-left: 40px; }
-            .keyword-list li::before { font-size: 32px; top: 5px; }
-            .strategy-title { font-size: 88px; margin-bottom: 24px; }
-            .strategy-desc { font-size: 48px; margin-bottom: 48px; }
-            .strategy-context { font-size: 40px; padding: 15px 30px; }
-            .note-paper { padding: 32px 64px; } .handwriting { font-size: 60px; }
-            .section-title { font-size: 80px; margin-bottom: 40px; }
-            .score-card { padding: 32px; }
-            .medal-circle { width: 100px; height: 100px; font-size: 56px; }
-            .score-points { font-size: 100px; } .score-label { font-size: 40px; }
-            .warning-box { padding: 24px 48px; } .warning-text { font-size: 44px; }
-            .case-title { font-size: 57px; } .card-mini { font-size: 38px; }
-            .calc-text { font-size: 53px; } .total-score { font-size: 95px; }
-            .nav-controls { bottom: 40px; right: 40px; }
-            .nav-btn { width: 60px; height: 60px; font-size: 24px; }
+            .header { padding: 15px 20px; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.7); border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-menu { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            
+            .slide { padding: 20px 5% 60px 5%; justify-content: flex-start; }
+            .content { width: 100%; height: auto; justify-content: flex-start; margin-bottom: 50px; }
+            
+            /* Slide 1 */
+            .main-title { font-size: clamp(3.5rem, 12vw, 6rem); margin-bottom: 10px; }
+            .subtitle { font-size: clamp(1.2rem, 5vw, 2rem); margin-top: 10px; text-align: center; }
+            .press-key-guide { margin-top: 40px; font-size: 1.2rem; padding: 15px 25px; }
+
+            /* Slide 2 */
+            .keywords-row { flex-wrap: wrap; gap: 15px; }
+            .keyword-mini { font-size: 2rem; } .keyword-mini span { font-size: 1.2rem; }
+            .game-title { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 20px; text-align: center; }
+            .rule-item { flex-direction: column; text-align: center; gap: 15px; padding: 20px; }
+            .rule-number { margin: 0 auto; width: 50px; height: 50px; min-width: 50px; font-size: 1.8rem; }
+            .rule-text { font-size: 1.1rem; }
+
+            /* Slide 3 */
+            .category-container { grid-template-columns: 1fr; gap: 20px; }
+            .category-col { padding: 20px; }
+            .card { width: 100%; height: auto; padding: 15px; flex-direction: row; gap: 15px; margin-bottom: 15px; }
+            .card-icon { font-size: 2.5rem; margin-bottom: 0; } .card-title { font-size: 1.5rem; margin-bottom: 0; }
+            .keyword-list li { font-size: 1.1rem; margin-bottom: 8px; padding-left: 30px; }
+            .keyword-list li::before { font-size: 1.2rem; top: 0; }
+
+            /* Slide 4 */
+            .strategy-title { font-size: clamp(2rem, 8vw, 3rem); margin-bottom: 15px; text-align: center; }
+            .strategy-desc { font-size: 1.2rem; margin-bottom: 25px; text-align: center; }
+            .strategy-context { font-size: 1.1rem; padding: 10px 20px; text-align: center; }
+            .note-paper { padding: 20px; margin-top: 20px; width: 100%; text-align: center; } .handwriting { font-size: 1.5rem; }
+            .r-circle { width: 100px; height: 100px; font-size: 4rem; }
+
+            /* Slide 5 */
+            .section-title { font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: 20px; text-align: center; }
+            .score-board-container { width: 100%; }
+            .score-board { flex-direction: column; gap: 15px; }
+            .score-card { width: 100%; padding: 20px; flex-direction: row; justify-content: space-between; }
+            .medal-circle { width: 50px; height: 50px; font-size: 1.5rem; margin-bottom: 0; }
+            .score-points { font-size: 2.5rem; margin-bottom: 0; } .score-label { font-size: 1.2rem; }
+            .warning-box { padding: 15px 20px; margin-top: 20px; width: 100%; } .warning-text { font-size: 1.2rem; line-height: 1.4; }
+
+            /* Slide 6 */
+            .examples-container { flex-direction: column; gap: 20px; }
+            .example-box { width: 100%; padding: 20px 10px; }
+            .case-title { font-size: 1.5rem; text-align: center; } .card-mini { font-size: 1rem; padding: 10px; min-width: 50px; }
+            .calc-text { font-size: 1.2rem; text-align: center; } .total-score { font-size: 2.5rem; padding: 10px 20px; }
+            
+            /* Nav Controls */
+            .nav-controls { bottom: 20px; right: 20px; z-index: 2000; position: fixed; gap: 10px; }
+            .nav-btn { width: 45px; height: 45px; font-size: 1.2rem; background: rgba(0, 0, 0, 0.7); }
         }
     </style>
 </head>
@@ -362,15 +394,10 @@
 
         <div class="bg-overlay"></div>
     </div> <script>
-        // --- [PC/모바일 하이브리드 스케일링 로직] ---
+        // --- [PC/모바일 하이브리드 스케일링 무력화 모음] ---
         function resizeApp() {
-            const wrapper = document.getElementById('main-wrapper');
-            if (window.innerWidth <= 1024) {
-                const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-                wrapper.style.transform = `scale(${scale})`;
-            } else {
-                wrapper.style.transform = 'none';
-            }
+            // A안 도입: 강제 모바일 축소 스케일링 폐기 및 순수 웹 반응 방식 활용
+            document.getElementById('main-wrapper').style.transform = 'none';
         }
         window.addEventListener('resize', resizeApp); resizeApp();
 
